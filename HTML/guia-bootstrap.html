@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Guia de Classes — Bootstrap</title>
 
-<!-- Bootstrap real, carregado só pra renderizar os exemplos ao vivo -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="/HTML/style.css">
 
@@ -23,6 +23,7 @@
 
 <div class="shell">
   <nav class="toc" id="toc">
+    <a href="#links">Links do bootstrap</a>
     <a href="#grid">Grid (layout)</a>
     <a href="#spacing">Espaçamento</a>
     <a href="#texto-cor">Texto &amp; cor</a>
@@ -31,9 +32,61 @@
     <a href="#navbar">Navbar</a>
     <a href="#cards">Cards</a>
     <a href="#js">Componentes com JS</a>
+
   </nav>
 
   <main>
+
+<section class="group" id="links">
+  <h2>Links</h2>
+  <p class="lede">Links para ativar o bootstrap no seu código.</p>
+
+  <div class="entry">
+    <div class="entry-head"><code class="name">Link do CSS</code><span class="what">Você adiciona ele no <code class="name">&lt;head&gt;</code> da página, para ativar os designs do bootstrap</span></div>
+    <div class="entry-body">
+      <div>
+        <p class="pane-label">Renderizado</p>
+        <div class="render"><div class="container" style="background:var(--accent-soft); padding:0.5rem;">Links</div></div>
+      </div>
+      <div>
+        <p class="pane-label">Código</p>
+        <pre class="code">&lt;link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"&gt;</pre>
+        <button class="copy-btn" onclick="copyText(this)"><i class="bi bi-copy"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head"><code class="name">Link de bootstrap-icons</code><span class="what">Você adiciona ele no <code class="name">&lt;head&gt;</code> da página, para ativar os icones do bootstrap</span></div>
+    <div class="entry-body">
+      <div>
+        <p class="pane-label">Renderizado</p>
+        <div class="render"><div class="container" style="background:var(--accent-soft); padding:0.9rem;">Links</div></div>
+      </div>
+      <div>
+        <p class="pane-label">Código</p>
+        <pre class="code">&lt;link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"&gt;</pre>
+        <button class="copy-btn" onclick="copyText(this)"><i class="bi bi-copy"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head"><code class="name">Link do JavaScript</code><span class="what">Você adiciona ele no <code class="name">&lt;body&gt;</code> da página, para ativar os comandos JS do bootstrap</span></div>
+    <div class="entry-body">
+      <div>
+        <p class="pane-label">Renderizado</p>
+        <div class="render"><div class="container" style="background:var(--accent-soft); padding:0.5rem;">Links</div></div>
+      </div>
+      <div>
+        <p class="pane-label">Código</p>
+        <pre class="code">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyText(this)"><i class="bi bi-copy"></i></button>
+      </div>
+    </div>
+  </div>
+
+</section>
 
     <section class="group" id="grid">
       <h2>Grid — o esqueleto da página</h2>
@@ -254,7 +307,7 @@
 
     <section class="group" id="navbar">
       <h2>Navbar</h2>
-      <p class="lede">É a combinação que te pegou: <code>navbar-expand-md</code> decide a partir de qual largura o menu vira horizontal; sem ela, fica sempre colapsado.</p>
+      <p class="lede">É a combinação ideal: <code>navbar-expand-md</code> decide a partir de qual largura o menu vira horizontal; sem ela, fica sempre colapsado.</p>
       <div class="entry">
         <div class="entry-head"><code class="name">.navbar</code> + <code class="name">.navbar-expand-md</code><span class="what">estrutura base + regra de responsividade do menu</span></div>
         <div class="entry-body">
@@ -397,6 +450,17 @@ window.addEventListener('scroll', function() {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
   });
 }, { passive: true });
+</script>
+
+<script>
+  function copyText(btn) {
+  var text = btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var original = btn.textContent;
+    btn.textContent = 'Copiado!';
+    setTimeout(function() { btn.textContent = original; }, 1500);
+  });
+}
 </script>
 
 </body>
