@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guia de Classes — Bootstrap</title>
+
+<!-- Bootstrap real, carregado só pra renderizar os exemplos ao vivo -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/HTML/style.css">
+
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">guia<span>.</span>bootstrap</div>
+    <input class="search" id="search" type="text" placeholder="Buscar uma classe (ex: col, btn, form)...">
+    <button class="theme-btn" id="themeBtn" type="button">Modo claro</button>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="toc" id="toc">
+    <a href="#grid">Grid (layout)</a>
+    <a href="#spacing">Espaçamento</a>
+    <a href="#texto-cor">Texto &amp; cor</a>
+    <a href="#botoes">Botões</a>
+    <a href="#forms">Formulários</a>
+    <a href="#navbar">Navbar</a>
+    <a href="#cards">Cards</a>
+    <a href="#js">Componentes com JS</a>
+  </nav>
+
+  <main>
+
+    <section class="group" id="grid">
+      <h2>Grid — o esqueleto da página</h2>
+      <p class="lede">Três classes que trabalham juntas: <code>container</code> limita a largura, <code>row</code> cria uma linha, <code>col-*</code> divide essa linha em colunas de 1 a 12.</p>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">.container</code><span class="what">centraliza o conteúdo e dá uma largura máxima responsiva</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render"><div class="container" style="background:var(--accent-soft); padding:0.5rem;">conteúdo centralizado</div></div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;div class="container"&gt;
+  conteúdo centralizado
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">.row</code> + <code class="name">.col-md-*</code><span class="what">divide o espaço em colunas — a soma dos números deve dar 12</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render">
+              <div class="row">
+                <div class="col-md-7" style="background:var(--accent-soft); padding:0.5rem;">col-md-7</div>
+                <div class="col-md-5" style="background:var(--panel-2); border:1px dashed var(--line); padding:0.5rem;">col-md-5</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;div class="row"&gt;
+  &lt;div class="col-md-7"&gt;...&lt;/div&gt;
+  &lt;div class="col-md-5"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><span class="what">Breakpoints (quando cada tamanho de coluna passa a valer)</span></div>
+        <div class="entry-body" style="grid-template-columns:1fr;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+            <thead><tr style="text-align:left; color:var(--ink-soft);"><th style="padding:0.3rem 0;">Prefixo</th><th>Largura mínima da tela</th><th>Uso comum</th></tr></thead>
+            <tbody>
+              <tr style="border-top:1px solid var(--line);"><td style="padding:0.4rem 0;"><code class="name">col-*</code></td><td>qualquer tamanho</td><td>celular em pé</td></tr>
+              <tr style="border-top:1px solid var(--line);"><td style="padding:0.4rem 0;"><code class="name">col-sm-*</code></td><td>≥ 576px</td><td>celular deitado</td></tr>
+              <tr style="border-top:1px solid var(--line);"><td style="padding:0.4rem 0;"><code class="name">col-md-*</code></td><td>≥ 768px</td><td>tablet — o mais usado</td></tr>
+              <tr style="border-top:1px solid var(--line);"><td style="padding:0.4rem 0;"><code class="name">col-lg-*</code></td><td>≥ 992px</td><td>notebook</td></tr>
+              <tr style="border-top:1px solid var(--line);"><td style="padding:0.4rem 0;"><code class="name">col-xl-*</code></td><td>≥ 1200px</td><td>monitor grande</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" id="spacing">
+      <h2>Espaçamento</h2>
+      <p class="lede">Padrão: <code>{propriedade}{direção}-{tamanho}</code>. Propriedade: <code>m</code> (margin) ou <code>p</code> (padding). Direção: <code>t</code> topo, <code>b</code> baixo, <code>s</code> início, <code>e</code> fim, <code>x</code> horizontal, <code>y</code> vertical (vazio = todos os lados). Tamanho: 0 a 5.</p>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">.p-4</code> · <code class="name">.mt-3</code> · <code class="name">.mb-2</code><span class="what">padding e margin prontos, sem precisar escrever CSS</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render">
+              <div class="p-4 mb-2" style="background:var(--accent-soft);">p-4 (padding em todos os lados)</div>
+              <div class="mt-3" style="background:var(--panel-2); border:1px dashed var(--line); padding:0.4rem;">mt-3 (margin no topo)</div>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;div class="p-4 mb-2"&gt;...&lt;/div&gt;
+&lt;div class="mt-3"&gt;...&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">.gap-3</code><span class="what">espaço entre itens dentro de um flex/grid (evita margin em cada filho)</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render">
+              <div class="d-flex gap-3">
+                <span class="p-2" style="background:var(--accent-soft);">A</span>
+                <span class="p-2" style="background:var(--accent-soft);">B</span>
+                <span class="p-2" style="background:var(--accent-soft);">C</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;div class="d-flex gap-3"&gt;
+  &lt;span&gt;A&lt;/span&gt;
+  &lt;span&gt;B&lt;/span&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" id="texto-cor">
+      <h2>Texto &amp; cor</h2>
+      <div class="entry">
+        <div class="entry-head"><code class="name">.text-center</code> · <code class="name">.fw-bold</code> · <code class="name">.text-muted</code><span class="what">alinhamento, peso da fonte e cor de texto</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render">
+              <p class="text-center fw-bold" style="margin:0;">Texto centralizado e em negrito</p>
+              <p class="text-muted" style="margin:0;">Texto secundário (mais apagado)</p>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;p class="text-center fw-bold"&gt;...&lt;/p&gt;
+&lt;p class="text-muted"&gt;...&lt;/p&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">.bg-*</code><span class="what">cor de fundo pronta (primary, secondary, success, danger, warning, light, dark)</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render d-flex gap-2 flex-wrap">
+              <span class="badge bg-primary">primary</span>
+              <span class="badge bg-success">success</span>
+              <span class="badge bg-danger">danger</span>
+              <span class="badge bg-warning text-dark">warning</span>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;span class="badge bg-primary"&gt;primary&lt;/span&gt;
+&lt;span class="badge bg-danger"&gt;danger&lt;/span&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" id="botoes">
+      <h2>Botões</h2>
+      <div class="entry">
+        <div class="entry-head"><code class="name">.btn</code> + <code class="name">.btn-*</code> + <code class="name">.btn-outline-*</code><span class="what"><code class="name">.btn</code> dá o formato; a segunda classe dá a cor; <code>outline</code> troca preenchido por contorno</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render d-flex gap-2 flex-wrap">
+              <button class="btn btn-primary">btn-primary</button>
+              <button class="btn btn-outline-primary">btn-outline-primary</button>
+              <button class="btn btn-danger btn-sm">btn-sm</button>
+              <button class="btn btn-secondary btn-lg">btn-lg</button>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;button class="btn btn-primary"&gt;...&lt;/button&gt;
+&lt;button class="btn btn-outline-primary"&gt;...&lt;/button&gt;
+&lt;button class="btn btn-danger btn-sm"&gt;...&lt;/button&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" id="forms">
+      <h2>Formulários</h2>
+      <div class="entry">
+        <div class="entry-head"><code class="name">.form-control</code> · <code class="name">.form-select</code> · <code class="name">.form-label</code><span class="what">estiliza input, select e o texto do rótulo</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render">
+              <label class="form-label" style="font-size:0.85rem;">Nome</label>
+              <input class="form-control" type="text" placeholder="Digite aqui" style="margin-bottom:0.6rem;">
+              <select class="form-select">
+                <option>Escolha uma opção</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;label class="form-label"&gt;Nome&lt;/label&gt;
+&lt;input class="form-control" type="text"&gt;
+&lt;select class="form-select"&gt;...&lt;/select&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">.form-check</code><span class="what">checkbox/radio com alinhamento correto entre caixa e texto</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="ex1">
+                <label class="form-check-label" for="ex1">Aceito os termos</label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;div class="form-check"&gt;
+  &lt;input class="form-check-input" type="checkbox" id="ex1"&gt;
+  &lt;label class="form-check-label" for="ex1"&gt;Aceito&lt;/label&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" id="navbar">
+      <h2>Navbar</h2>
+      <p class="lede">É a combinação que te pegou: <code>navbar-expand-md</code> decide a partir de qual largura o menu vira horizontal; sem ela, fica sempre colapsado.</p>
+      <div class="entry">
+        <div class="entry-head"><code class="name">.navbar</code> + <code class="name">.navbar-expand-md</code><span class="what">estrutura base + regra de responsividade do menu</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado (redimensione a janela pra ver o efeito)</p>
+            <div class="render">
+              <nav class="navbar navbar-expand-md" style="background:var(--panel-2); border-radius:6px;">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Marca</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#exNav">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="exNav">
+                    <ul class="navbar-nav ms-auto">
+                      <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;nav class="navbar navbar-expand-md"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;Marca&lt;/a&gt;
+  &lt;button class="navbar-toggler"
+    data-bs-toggle="collapse"
+    data-bs-target="#exNav"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="exNav"&gt;
+    &lt;ul class="navbar-nav ms-auto"&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="#"&gt;Início&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" id="cards">
+      <h2>Cards</h2>
+      <div class="entry">
+        <div class="entry-head"><code class="name">.card</code> + <code class="name">.card-body</code><span class="what">caixa com borda pronta pra agrupar conteúdo (serviço, produto, item de lista)</span></div>
+        <div class="entry-body">
+          <div>
+            <p class="pane-label">Renderizado</p>
+            <div class="render">
+              <div class="card" style="max-width: 16rem;">
+                <div class="card-body">
+                  <h5 class="card-title" style="margin-bottom:0.3rem;">Título</h5>
+                  <p class="card-text" style="margin:0;">Texto de exemplo dentro do card.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="pane-label">Código</p>
+            <pre class="code">&lt;div class="card"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Texto...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" id="js">
+      <h2>Componentes com JavaScript</h2>
+      <p class="lede">Esses só funcionam com o <code>bootstrap.bundle.min.js</code> carregado. O padrão é sempre: <code>data-bs-toggle="tipo"</code> diz qual comportamento; <code>data-bs-target="#id"</code> diz qual elemento ele controla.</p>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">data-bs-toggle="collapse"</code><span class="what">esconde/mostra um bloco — usado no menu mobile</span></div>
+        <div class="entry-body" style="grid-template-columns:1fr;">
+          <pre class="code">&lt;button data-bs-toggle="collapse" data-bs-target="#alvo"&gt;Abrir&lt;/button&gt;
+&lt;div class="collapse" id="alvo"&gt;Conteúdo escondido&lt;/div&gt;</pre>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">data-bs-toggle="modal"</code><span class="what">abre uma janela sobreposta (popup)</span></div>
+        <div class="entry-body" style="grid-template-columns:1fr;">
+          <pre class="code">&lt;button data-bs-toggle="modal" data-bs-target="#meuModal"&gt;Abrir&lt;/button&gt;
+&lt;div class="modal" id="meuModal"&gt;...&lt;/div&gt;</pre>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><code class="name">data-bs-toggle="dropdown"</code><span class="what">menu suspenso ao clicar</span></div>
+        <div class="entry-body" style="grid-template-columns:1fr;">
+          <pre class="code">&lt;button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"&gt;
+  Menu
+&lt;/button&gt;
+&lt;ul class="dropdown-menu"&gt;
+  &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Opção&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<p class="footer-note">Cobre o essencial pra sair do zero. Pra tudo, a documentação oficial tem cada classe: <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank" rel="noopener">getbootstrap.com/docs</a>.</p>
+
+<script>
+// Filtro de busca simples
+document.getElementById('search').addEventListener('input', function(e) {
+  var q = e.target.value.toLowerCase().trim();
+  document.querySelectorAll('.entry').forEach(function(entry) {
+    var text = entry.textContent.toLowerCase();
+    entry.classList.toggle('hide', q.length > 0 && text.indexOf(q) === -1);
+  });
+});
+
+// Alternar tema
+var themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click', function() {
+  var root = document.documentElement;
+  var current = root.getAttribute('data-theme');
+  var next = current === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', next);
+  themeBtn.textContent = next === 'light' ? 'Modo escuro' : 'Modo claro';
+});
+
+// Destaca item ativo no sumário lateral ao rolar
+var links = document.querySelectorAll('.toc a');
+var sections = Array.from(document.querySelectorAll('section.group'));
+window.addEventListener('scroll', function() {
+  var pos = window.scrollY + 100;
+  var current = sections[0];
+  sections.forEach(function(s) { if (s.offsetTop <= pos) current = s; });
+  links.forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
